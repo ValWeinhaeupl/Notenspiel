@@ -1,0 +1,20 @@
+Sielemodi für nur erste oktave, nur zweite oktave(bis c3), beide
+Geschwindigkeiten (3 Stufen)
+ohne Vorzeichen, Mischung aus normal und mit +, Mischung aus Normal und b, Alles 
+Ein Modus mit Klavier, anderer mit Tastatureingabe
+
+button layout wie Tastatur machen!!
+
+10 Levels (erste 5 wenig bis keine Veränderung in Geschwindigkeit), Animation bei Aufstieg
+Balken geht von Haus aus nach unten, wenn richtig etwas nach oben, wenn falsch oder nicht rechtzeitig geschafft => nach unten
+Datenbank für Anmeldung der Schüler => Leaderboard von jeder Klasse (Username, Klasse), auch Leaderboard für ganze Schule
+
+
+//should have
+Richtiger Ton wird Abgespielt, wenn richtig (Option Ton auszuschalten)
+
+
+
+
+
+Noten ausnahmen: Aes = As, Hes = B
