@@ -5,28 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="Librarys/progressbar.js-master/dist/progressbar.js"></script>
+    <!-- <script src="Librarys/progressbar.js-master/dist/progressbar.js"></script> -->
     <script src="game.js" defer></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="canvas">
-      <div class="noline zeile" value="11">g</div>
-      <div class="line zeile" value="10">f</div>
-      <div class="noline zeile" value="9">e</div>
-      <div class="line zeile" value="8">d</div>
-      <div class="noline zeile" value="7">c</div>
-      <div class="line zeile" value="6">h</div>
-      <div class="noline zeile" value="5">a</div>
-      <div class="line zeile" value="4">g</div>
-      <div class="noline zeile" value="3">f</div>
-      <div class="line zeile" value="2">e</div>
-      <div class="noline zeile" value="1">d</div>
-      <div class="noline zeile" value="0">c</div>
+      <div class="noline zeile" value="14"></div>
+      <div class="noline zeile" value="13"></div>
+      <div class="noline zeile" value="12"></div>
+      <div class="noline zeile" value="11"></div>
+      <div class="line zeile" value="10"></div>
+      <div class="noline zeile" value="9"></div>
+      <div class="line zeile" value="8"></div>
+      <div class="noline zeile" value="7"></div>
+      <div class="line zeile" value="6"></div>
+      <div class="noline zeile" value="5"></div>
+      <div class="line zeile" value="4"></div>
+      <div class="noline zeile" value="3"></div>
+      <div class="line zeile" value="2"></div>
+      <div class="noline zeile" value="1"></div>
+      <div class="noline zeile" value="0"></div>
     </div>
 
-    <div id="buttons">
+    <!-- <div id="buttons">
       <div class="button" onclick="guess('1')">C</div>
       <div class="button" onclick="guess('2')">D</div>
       <div class="button" onclick="guess('3')">E</div>
@@ -34,8 +37,38 @@
       <div class="button" onclick="guess('5')">G</div>
       <div class="button" onclick="guess('6')">A</div>
       <div class="button" onclick="guess('7')">H</div>
-    </div>
+    </div> -->
+    <div id="wrapper">
+      <div id="buttons">
+        <div class="button" onclick="guess('1')">C</div>
+        <div class="schwarz">Cis</div>
+        <div class="button" onclick="guess('2')">D</div>
+        <div class="schwarz">Dis</div>
+        <div class="button" onclick="guess('3')">E</div>
+        <div class="button" onclick="guess('4')">F</div>
+        <div class="schwarz">Fis</div>
+        <div class="button" onclick="guess('5')">G</div>
+        <div class="schwarz">Gis</div>
+        <div class="button" onclick="guess('6')">A</div>
+        <div class="schwarz">As</div>
+        <div class="button" onclick="guess('7')">H</div>
+        <div class="button" onclick="guess('8')">C²</div>
+        <div class="schwarz">Cis²</div>
+        <div class="button" onclick="guess('9')">D²</div>
+        <div class="schwarz">Dis²</div>
+        <div class="button" onclick="guess('10')">E²</div>
+        <div class="button" onclick="guess('11')">F²</div>
+        <div class="schwarz">Fis²</div>
+        <div class="button" onclick="guess('12')">G²</div>
+        <div class="schwarz">Gis²</div>
+        <div class="button" onclick="guess('13')">A²</div>
+        <div class="schwarz">As²</div>
+        <div class="button" onclick="guess('14')">H²</div>
+        <div class="button" onclick="guess('15')">C³</div>
+      </div>
 
-    <div id="pbar"></div>
+      <!-- <div id="pbar">Lvl1</div> -->
+      <progress id="pbar" value="50" max="100"></progress>
+    </div>
   </body>
 </html>
