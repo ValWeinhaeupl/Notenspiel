@@ -55,6 +55,7 @@ body {
   user-select: none;
   border-style: solid;
   border-width: 2px;
+  z-index: 100;
 }
 
 .button:hover {
@@ -92,6 +93,25 @@ body {
 
 #pbar::-webkit-progress-value {
   background: green;
+  animation-name: blinken;
+}
+
+@keyframes blinken {
+  0% {
+    background: green;
+  }
+  25% {
+    background: yellow;
+  }
+  50% {
+    background: green;
+  }
+  99% {
+    background: yellow;
+  }
+  100% {
+    background: green;
+  }
 }
 
 #pbar::-webkit-progress-bar {
@@ -117,4 +137,18 @@ body {
 .schwarz:hover {
   cursor: pointer;
   background-color: rgb(53, 53, 53);
+}
+
+#animation {
+  /* display: none; */
+  width: 100%;
+}
+
+#gifwrapper {
+  top: 23vh;
+  width: 30vw;
+  position: absolute;
+  left: 74vw;
+  overflow: hidden;
+  height: 43vh;
 }

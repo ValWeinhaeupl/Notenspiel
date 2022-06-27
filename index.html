@@ -39,36 +39,41 @@
       <div class="button" onclick="guess('7')">H</div>
     </div> -->
     <div id="wrapper">
+      <div id="gifwrapper">
+        <img id="animation" />
+      </div>
+
       <div id="buttons">
         <div class="button" onclick="guess('1')">C</div>
-        <div class="schwarz">Cis</div>
+        <div class="schwarz" onclick="guess('16')">Cis</div>
         <div class="button" onclick="guess('2')">D</div>
-        <div class="schwarz">Dis</div>
+        <div class="schwarz" onclick="guess('17')">Dis</div>
         <div class="button" onclick="guess('3')">E</div>
         <div class="button" onclick="guess('4')">F</div>
-        <div class="schwarz">Fis</div>
+        <div class="schwarz" onclick="guess('18')">Fis</div>
         <div class="button" onclick="guess('5')">G</div>
-        <div class="schwarz">Gis</div>
+        <div class="schwarz" onclick="guess('19')">Gis</div>
         <div class="button" onclick="guess('6')">A</div>
-        <div class="schwarz">As</div>
+        <div class="schwarz" onclick="guess('20')">As</div>
         <div class="button" onclick="guess('7')">H</div>
         <div class="button" onclick="guess('8')">C²</div>
-        <div class="schwarz">Cis²</div>
+        <div class="schwarz" onclick="guess('21')">Cis²</div>
         <div class="button" onclick="guess('9')">D²</div>
-        <div class="schwarz">Dis²</div>
+        <div class="schwarz" onclick="guess('22')">Dis²</div>
         <div class="button" onclick="guess('10')">E²</div>
         <div class="button" onclick="guess('11')">F²</div>
-        <div class="schwarz">Fis²</div>
+        <div class="schwarz" onclick="guess('23')">Fis²</div>
         <div class="button" onclick="guess('12')">G²</div>
-        <div class="schwarz">Gis²</div>
+        <div class="schwarz" onclick="guess('24')">Gis²</div>
         <div class="button" onclick="guess('13')">A²</div>
-        <div class="schwarz">As²</div>
+        <div class="schwarz" onclick="guess('25')">As²</div>
         <div class="button" onclick="guess('14')">H²</div>
         <div class="button" onclick="guess('15')">C³</div>
       </div>
 
       <!-- <div id="pbar">Lvl1</div> -->
       <progress id="pbar" value="50" max="100"></progress>
+      <p id="levelanzeige">Level 1</p>
     </div>
   </body>
 </html>

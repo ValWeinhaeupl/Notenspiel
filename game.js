@@ -5,26 +5,26 @@ let lines;
 let notes = [];
 
 let timetoguess = 15000;
-let abstand = 3000;
+let abstand = 5000;
 let temptastatur =
   '<div class="noline zeile" value="11">g</div><div class="line zeile" value="10">f</div><div class="noline zeile" value="9">e</div><div class="line zeile" value="8">d</div><div class="noline zeile" value="7">c</div><div class="line zeile" value="6">h</div><div class="noline zeile" value="5">a</div><div class="line zeile" value="4">g</div><div class="noline zeile" value="3">f</div><div class="line zeile" value="2">e</div><div class="noline zeile" value="1">d</div><div class="noline zeile" value="0">c</div></div><div id="buttons"><div class="button" onclick="guess("1")">C</div><div class="button" onclick="guess("2")">D</div><div class="button" onclick="guess("3")">E</div><div class="button" onclick="guess("4")">F</div><div class="button" onclick="guess("5")">G</div><div class="button" onclick="guess("6")">A</div><div class="button" onclick="guess("7")">H</div>';
 let zeilenanzahl = 15;
 let pbar = document.getElementById("pbar");
-let pbarspeed = 5000;
+let pbarspeed = 2000;
 let punishment = 5;
 let reward = 10;
 let level = 1;
 let leveldata = [
-  { timetoguess: 15000, abstand: 5000, pbarspeed: 5000 },
-  { timetoguess: 14000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 13000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 12000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 11000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 10000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 9000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 8000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 7000, abstand: 3000, pbarspeed: 500 },
-  { timetoguess: 6000, abstand: 3000, pbarspeed: 500 },
+  { timetoguess: 15000, abstand: 5000, pbarspeed: 2000 },
+  { timetoguess: 14000, abstand: 3000, pbarspeed: 2000 },
+  { timetoguess: 13000, abstand: 3000, pbarspeed: 1900 },
+  { timetoguess: 12000, abstand: 3000, pbarspeed: 1900 },
+  { timetoguess: 11000, abstand: 3000, pbarspeed: 1800 },
+  { timetoguess: 10000, abstand: 3000, pbarspeed: 1600 },
+  { timetoguess: 9000, abstand: 3000, pbarspeed: 1400 },
+  { timetoguess: 8000, abstand: 3000, pbarspeed: 1200 },
+  { timetoguess: 7000, abstand: 3000, pbarspeed: 1000 },
+  { timetoguess: 6000, abstand: 3000, pbarspeed: 700 },
 ];
 
 //loads notes endlessly
@@ -127,18 +127,15 @@ function guess(value) {
 
 let pbarinterval = setInterval(() => {
   pbar.value--;
-  if (pbar.value > 70) {
-    pbar.style.background = "green";
-  } else if (pbar.value > 30) {
-    pbar.style.background = "yellow";
-  } else {
-    pbar.style.background = "darkred";
+  if (pbar.value <= 2) {
+    leveldown();
   }
 }, pbarspeed);
 
 function rightguess() {
   pbar.value += reward;
   console.log(pbar.value);
+  //do hods wos
   if (pbar.value >= 98) {
     levelup();
     pbar.value = 50;
@@ -147,11 +144,18 @@ function rightguess() {
 
 function wrongorlate() {
   pbar.value -= punishment;
+  if (pbar.value <= 2) {
+    leveldown();
+  }
 }
 
 function levelup() {
   level++;
-  if (level <= 11) {
+  document.getElementById("levelanzeige").innerHTML = "Level " + level;
+
+  pbar.style.animation = "blinken 2s infinite";
+
+  if (level >= 11) {
     console.log("gratulation");
     clearInterval(notenstream);
   } else {
@@ -162,6 +166,9 @@ function levelup() {
     }
     pbar.style = "transition-duration: " + pbarspeed + "ms";
   }
+  let animation = document.getElementById("animation");
+  animation.style.display = "block";
+  animation.src = "public/animations/firework2.gif";
 }
 
 function leveldown() {
