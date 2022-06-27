@@ -10,12 +10,12 @@ let temptastatur =
   '<div class="noline zeile" value="11">g</div><div class="line zeile" value="10">f</div><div class="noline zeile" value="9">e</div><div class="line zeile" value="8">d</div><div class="noline zeile" value="7">c</div><div class="line zeile" value="6">h</div><div class="noline zeile" value="5">a</div><div class="line zeile" value="4">g</div><div class="noline zeile" value="3">f</div><div class="line zeile" value="2">e</div><div class="noline zeile" value="1">d</div><div class="noline zeile" value="0">c</div></div><div id="buttons"><div class="button" onclick="guess("1")">C</div><div class="button" onclick="guess("2")">D</div><div class="button" onclick="guess("3")">E</div><div class="button" onclick="guess("4")">F</div><div class="button" onclick="guess("5")">G</div><div class="button" onclick="guess("6")">A</div><div class="button" onclick="guess("7")">H</div>';
 let zeilenanzahl = 15;
 let pbar = document.getElementById("pbar");
-let pbarspeed = 500;
+let pbarspeed = 5000;
 let punishment = 5;
 let reward = 10;
 let level = 1;
 let leveldata = [
-  { timetoguess: 15000, abstand: 3000, pbarspeed: 500 },
+  { timetoguess: 15000, abstand: 5000, pbarspeed: 5000 },
   { timetoguess: 14000, abstand: 3000, pbarspeed: 500 },
   { timetoguess: 13000, abstand: 3000, pbarspeed: 500 },
   { timetoguess: 12000, abstand: 3000, pbarspeed: 500 },
@@ -28,7 +28,7 @@ let leveldata = [
 ];
 
 //loads notes endlessly
-setInterval(() => {
+const notenstream = setInterval(() => {
   loadnotes();
   console.log(notes);
 }, abstand);
@@ -38,7 +38,7 @@ function loadnotes() {
   note.src = "public/icons/ganze-note.png";
   note.className = "noten";
   note.style.left = "90vw";
-  note.style.transition = "left " + timetoguess + "ms linear;";
+  note.style.transition = "all " + timetoguess + "ms linear";
   lines = document.getElementsByClassName("zeile");
   let randomno = Math.floor(Math.random() * zeilenanzahl + 1);
   if (randomno == 16) {
@@ -138,6 +138,11 @@ let pbarinterval = setInterval(() => {
 
 function rightguess() {
   pbar.value += reward;
+  console.log(pbar.value);
+  if (pbar.value >= 98) {
+    levelup();
+    pbar.value = 50;
+  }
 }
 
 function wrongorlate() {
@@ -146,12 +151,23 @@ function wrongorlate() {
 
 function levelup() {
   level++;
-  pbarspeed = leveldata[level].pbarspeed;
-  timetoguess = leveldata[level].timetoguess;
-  for (let i = 0; i < notes.lenght; i++) {
-    notes[i].style = "transition-duration: " + timetoguess + "ms";
+  if (level <= 11) {
+    console.log("gratulation");
+    clearInterval(notenstream);
+  } else {
+    pbarspeed = leveldata[level].pbarspeed;
+    timetoguess = leveldata[level].timetoguess;
+    for (let i = 0; i < notes.lenght; i++) {
+      notes[i].style = "transition-duration: " + timetoguess + "ms";
+    }
+    pbar.style = "transition-duration: " + pbarspeed + "ms";
   }
-  pbar.style = "transition-duration: " + pbarspeed + "ms";
 }
 
-function leveldown() {}
+function leveldown() {
+  level--;
+  if (level == 0) {
+    console.log("gescheitert");
+    clearInterval(notenstream);
+  }
+}
