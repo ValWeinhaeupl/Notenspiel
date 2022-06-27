@@ -28,7 +28,7 @@ let leveldata = [
 ];
 
 //loads notes endlessly
-const notenstream = setInterval(() => {
+let notenstream = setInterval(() => {
   loadnotes();
   console.log(notes);
 }, abstand);
@@ -153,11 +153,14 @@ function levelup() {
   level++;
   document.getElementById("levelanzeige").innerHTML = "Level " + level;
 
-  pbar.style.animation = "blinken 2s infinite";
+  clearInterval(notenstream);
+
+  for (let i = 0; i < notes.length; i++) {
+    notes[i].parentNode.removeChild(notes[i]);
+  }
 
   if (level >= 11) {
     console.log("gratulation");
-    clearInterval(notenstream);
   } else {
     pbarspeed = leveldata[level].pbarspeed;
     timetoguess = leveldata[level].timetoguess;
@@ -165,9 +168,13 @@ function levelup() {
       notes[i].style = "transition-duration: " + timetoguess + "ms";
     }
     pbar.style = "transition-duration: " + pbarspeed + "ms";
+
+    notenstream = setInterval(() => {
+      loadnotes();
+      console.log(notes);
+    }, abstand);
   }
   let animation = document.getElementById("animation");
-  animation.style.display = "block";
   animation.src = "public/animations/firework2.gif";
 }
 
@@ -176,5 +183,14 @@ function leveldown() {
   if (level == 0) {
     console.log("gescheitert");
     clearInterval(notenstream);
+  } else {
+    pbar.value = 50;
+    document.getElementById("levelanzeige").innerHTML = "Level " + level;
+    pbarspeed = leveldata[level].pbarspeed;
+    timetoguess = leveldata[level].timetoguess;
+    for (let i = 0; i < notes.lenght; i++) {
+      notes[i].style = "transition-duration: " + timetoguess + "ms";
+    }
+    pbar.style = "transition-duration: " + pbarspeed + "ms";
   }
 }
